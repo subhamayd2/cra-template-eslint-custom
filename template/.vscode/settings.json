@@ -5,6 +5,7 @@
     "prettier.trailingComma": "none",
     "eslint.alwaysShowStatus": true,
     "eslint.format.enable": true,
+    "editor.formatOnSave": true,
     "editor.codeActionsOnSave": {
         "source.fixAll.eslint": true
     },
