@@ -8,11 +8,18 @@
         "plugin:react/recommended",
         "airbnb",
         "plugin:import/recommended",
-        "plugin:import/typescript"
+        "plugin:import/typescript",
+        "plugin:jsonc/base"
     ],
     "settings": {
         "import/resolver": {
             "node": {
+                "extensions": [
+                    ".js",
+                    ".jsx",
+                    ".ts",
+                    ".tsx"
+                ],
                 "moduleDirectory": [
                     "node_modules",
                     "src"
@@ -21,6 +28,24 @@
         }
     },
     "parser": "@typescript-eslint/parser",
+    "overrides": [
+        {
+            "files": [
+                "*.json",
+                "*.json5",
+                "*.jsonc"
+            ],
+            "parser": "jsonc-eslint-parser"
+        },
+        {
+            "files": [
+                "**/*.json"
+            ],
+            "rules": {
+                "eol-last": "off"
+            }
+        }
+    ],
     "parserOptions": {
         "requireConfigFile": false,
         "ecmaFeatures": {
@@ -71,7 +96,8 @@
         "react-hooks/exhaustive-deps": "warn",
         "react/jsx-filename-extension": 0,
         "react/react-in-jsx-scope": 0,
-        "indent": [
+        "indent": "off",
+        "@typescript-eslint/indent": [
             "error",
             4
         ],
@@ -130,6 +156,22 @@
         "camelcase": 0,
         "strict": 0,
         "jsx-a11y/anchor-is-valid": 0,
-        "no-console": 0
+        "no-console": 0,
+        "jsonc/sort-keys": "error",
+        "require-await": "error",
+        "no-return-await": "warn",
+        "no-restricted-imports": [
+            "warn",
+            {
+                "patterns": [
+                    {
+                        "group": [
+                            "../*"
+                        ],
+                        "message": "Should not use ../ in import paths"
+                    }
+                ]
+            }
+        ]
     }
 }
